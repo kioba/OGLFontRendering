@@ -1,0 +1,64 @@
+RAGNA_API Object
+--
+# vao : GLuint
+# vbo : GLuint
+# uv_buffer : GLuint
+# shader : Shader*
+# obj_color : glm::vec4
+# pos : glm::vec2
+# size : glm::vec2
+# z_order : float
+# rotate_x : float
+# rotate_y : float
+# rotate_z : float
+
+--
++ Object() :Constr
++ virtual ~Object() : Deststr
++ setColor(color : const glm::vec4) : void
++ getColor() const : glm::vec4
++ setShader(shader : Shader) : void
++ getShader() const : Shader*
++ virtual create() = 0 :  void
++ virtual draw() const = 0 :  void
++ virtual isInside(point : const glm::vec2) const = 0 : bool
+
++ move(x_axis : float, y_axis : float) : void
++ resize(width : float, height : float) : void
++ setZOrder(z_axis : float) : void
++ rotateX(degree : float) : void
++ rotateY(degree : float) : void
++ rotateZ(degree : float) : void
+
++ getPos() const : glm::vec2
++ getSize() const : glm::vec2
++ getZOrder() const : float
++ getRotateX() const : float
++ getRotateY() const : float
++ getRotateZ() const : float
+
+
+################################################################################
+
+RAGNA_API Glyph
+--
+- vert_size : int
+- pos_bezier_size : int
+- neg_bezier_size : int
+- bezier_shader : Shader
+- fill_shader : Shader
+- bbox : Runic::GlyphMetric
+- glyph : Runic::Glyph
+- scale : float
+
+--
++ Glyph(char_code : char) : Constr
++ virtual ~Glyph() : Destr
++ virtual create() override :  void
++ virtual draw() const override :  void
++ getGlyphNormWidth() const : float
++ getGlyphNormHeight() const : float
++ getBBOXHeight() const : float
++ virtual isInside(point : const glm::vec2) const override : bool
++ setScale(scale_value : float) : void
++ getScale() const : float

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>320</x>
+      <y>80</y>
+      <w>470</w>
+      <h>370</h>
+    </coordinates>
+    <panel_attributes>FrameWindow
+--
+- m_window : SDL_Window*
+- m_context : SDL_GLContext 
+- m_title : std::string
+--
+- static logSDLError(os : std::ostream&amp;, msg : const std::string) : void
+--
++ FrameWindow() : constr
++ FrameWindow(title : std::string) : constr
++ virtual ~FrameWindow() destr
+
++ create() : bool
++ destroy() : void
+
++ setDimension(dim : const SDL_Rect&amp;) : void
++ getDimension() const : SDL_Rect
+
++ setTitle(const std::string title) : void
++ getTitle() const : std::string
+
++ getWindow() const : SDL_Window*
++ getContext() const : SDL_GLContext
++ swapContext() const : void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

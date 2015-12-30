@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>20</y>
+      <w>500</w>
+      <h>450</h>
+    </coordinates>
+    <panel_attributes>App
+--
+-static singleton : App*
+- quit : bool
+- window : FrameWindow
+- panel : Ragna::Panel*
+
+--
+- App() : Constr
+- App(other : const App&amp;) = delete : CopyConstr
+- App&amp; operator=(other : const App&amp;) = delete : AssignOperator
+
+- init() : bool
+- cleanUp() : void
+- update() : void
+- render() : void
+
+- handleInput() : void
+- keyDownEvent(key : const SDL_KeyboardEvent&amp;) : void
+- mouseButtonDownEvent(button : const SDL_MouseButtonEvent&amp;) : void
+- mouseMotionEvent(motion : const SDL_MouseMotionEvent&amp;) : void
+- mouseWheelEvent(wheel : const SDL_MouseWheelEvent&amp;) : void
+- windowEvent(window : const SDL_WindowEvent&amp;) : void
+
+--
++ ~App() : Destr
++ static getSingleton() :  App&amp;
++ execute() : void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

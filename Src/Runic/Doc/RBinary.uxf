@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <help_text>// Uncomment the following line to change the fontsize and font:
+fontsize=14
+fontfamily=Monospaced //possible: SansSerif,Serif,Monospaced
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// Welcome to UMLet!
+//
+// Double-click on elements to add them to the diagram, or to copy them
+// Edit elements by modifying the text in this panel
+// Hold Ctrl to select multiple elements
+// Use Ctrl+mouse to select via lasso
+//
+// Use +/- or Ctrl+mouse wheel to zoom
+// Drag a whole relation at its central square icon
+//
+// Press Ctrl+C to copy the whole diagram to the system clipboard (then just paste it to, eg, Word)
+// Edit the files in the "palettes" directory to create your own element palettes
+//
+// Select "Custom Elements &gt; New..." to create new element types
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// This text will be stored with each diagram;  use it for notes.</help_text>
+  <zoom_level>4</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>108</x>
+      <y>236</y>
+      <w>188</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>EndianConverter
+--
++ EndianConverter() : Constr
++ virtual ~EndianConverter() : Destr
+
++ virtual getInt8() : int8_t
++ virtual getUInt8() : uint8_t
+
++ virtual getInt16() = 0 : int16_t
++ virtual getUInt16() = 0 : uint16_t
+
++ virtual getInt32() = 0 : int32_t
++ virtual getUInt32() = 0 : uint32_t
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>108</x>
+      <y>4</y>
+      <w>260</w>
+      <h>224</h>
+    </coordinates>
+    <panel_attributes>RBinary
+--
+- en_conv : EndianConverter*
+- buff : char[]
+- range : RRange
+- act_pos : Iter
+- cpu_endian : Endianness
+- buff_endian : Endianness
+
+--
+- verifyCPUEndianness() const : Endianness
+- createConverter() : void
+
+--
++ RBinary(stream : std::ifstream&amp;, endian : const Endianness) Constr
++ RBinary(buffer: const RBinary&amp;) : CopyConstr
++ operator=(binary : const RBinary&amp;) : RBinary&amp;
++ virtual ~RBinary() : Destr
+
++ getContentEndianness() const : Endianness
++ getCPUEndianness() const : Endianness
+
++ sub(begin_pos : Iter, end_pos : Iter) : RRange
++ seek(iterator : Iter) : void
+
++ begin() const : Iter
++ end() const : Iter
++ act() : Iter
+
++ getInt8() : int8_t
++ getUInt8() : uint8_t
++ getInt16() : int16_t
++ getUInt16() : uint16_t
++ getInt32() : int32_t
++ getUInt32() : uint32_t
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>108</x>
+      <y>328</y>
+      <w>188</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>NormalEndian
+--
+NormalEndian() : Constr
+virtual ~NormalEndian() : Destr
+
+virtual getInt16(iter : Iter&amp;) override : int16_t
+virtual getUInt16(iter : Iter&amp;) override : uint16_t
+
+virtual getInt32(iter : Iter&amp;) override : int32_t
+virtual getUInt32(iter : Iter&amp;) override : uint32_t
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>108</x>
+      <y>400</y>
+      <w>192</w>
+      <h>68</h>
+    </coordinates>
+    <panel_attributes>ShiftEndian
+--
++ ShiftEndian() : Constr
++ virtual ~ShiftEndian() : Destr
+
++ virtual getInt16(iter : Iter&amp;) override : int16_t
++ virtual getUInt16(iter : Iter&amp;) override : uint16_t
+
++ virtual getInt32(iter : Iter&amp;) override : int32_t
++ virtual getUInt32(iter : Iter&amp;) override : uint32_t
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>292</x>
+      <y>268</y>
+      <w>24</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;10.0;40.0;180.0;10.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>292</x>
+      <y>256</y>
+      <w>32</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0;60.0;380.0;20.0;380.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>172</x>
+      <y>224</y>
+      <w>12</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>

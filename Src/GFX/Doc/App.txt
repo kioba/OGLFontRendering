@@ -1,0 +1,28 @@
+App
+--
+-static singleton : App*
+- quit : bool
+- window : FrameWindow
+- panel : Ragna::Panel*
+
+--
+- App() : Constr
+- App(other : const App&) = delete : CopyConstr
+- App& operator=(other : const App&) = delete : AssignOperator
+
+- init() : bool
+- cleanUp() : void
+- update() : void
+- render() : void
+
+- handleInput() : void
+- keyDownEvent(key : const SDL_KeyboardEvent&) : void
+- mouseButtonDownEvent(button : const SDL_MouseButtonEvent&) : void
+- mouseMotionEvent(motion : const SDL_MouseMotionEvent&) : void
+- mouseWheelEvent(wheel : const SDL_MouseWheelEvent&) : void
+- windowEvent(window : const SDL_WindowEvent&) : void
+
+--
++ ~App() : Destr
++ static getSingleton() :  App&
++ execute() : void
